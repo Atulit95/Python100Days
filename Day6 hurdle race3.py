@@ -29,10 +29,4 @@ while not at_goal():
     if wall_in_front():
         jump()
     else:
-<<<<<<< HEAD:Day6 hurdle race3.py
         move()
-=======
-        move()
-
-# "
->>>>>>> 80e98d6648ae94c751ad634bee3d21d80f1ebf87:Day6 Hurdle race3.py
