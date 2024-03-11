@@ -1,4 +1,4 @@
-#Step 5
+#Step 5 This is final code to make this Hangman Game user friendly
 
 import random
 import hangman_art
