@@ -1,21 +1,22 @@
 #Step 5 This is final code to make this Hangman Game user friendly
 
 import random
-import hangman_art
-import hangman_word
-
+import hangman_art_module
+import hangman_word_module
 #TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
 #Delete this line: word_list = ["ardvark", "baboon", "camel"]
-chosen_word = random.choice(hangman_word.words())
+chosen_word = random.choice(hangman_word_module.words())
 word_length = len(chosen_word)
-lives = 6
-stage=hangman_art.stages()
+lives = 7
+stage=hangman_art_module.stages()
+used_words=[]
+
 
 
 #TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
-print(hangman_art.logo())
+print(hangman_art_module.logo())
 #Testing code
-print(f'Pssst, the solution is {chosen_word}.')
+# print(f'Pssst, the solution is {chosen_word}.')
 
 #Create blanks
 display = []
@@ -24,8 +25,11 @@ for _ in range(word_length):
 
 while "_" in display:
     guess = input("Guess a letter: ").lower()
+    used_words.append(guess)
 # This print(end="\033c") is used to clear screen of previous life lost(to make code user friendly) 
-    print(end="\033c") 
+    print(end="\033c")
+    
+    
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
     if guess in display:
@@ -36,6 +40,7 @@ while "_" in display:
         # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
         if letter == guess:
             display[position] = letter
+            
 
     #Check if user is wrong.
     if guess not in chosen_word:
@@ -47,6 +52,7 @@ while "_" in display:
         print(stage[lives])
     #Join all the elements in the list and turn it into a String.
     print(f"{' '.join(display)}")
+    print(f"Your used words are: {used_words}") 
 
     #Check if user has got all letters.
 if(''.join(display)==chosen_word):
