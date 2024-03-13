@@ -16,14 +16,14 @@ def encode(message,shift_value):
 
 #TODO-1: Create a different function called 'decrypt' that takes the 'text' and 'shift' as inputs.
 def decode(message,shift_value):
-    encoded_message=""
+    decoded_message=""
     for i in range(len(message)):
         if message[i] in alphabet:
             position_in_alphabet=alphabet.index(message[i])
-            encoded_message+=alphabet[(26+position_in_alphabet)-shift_value]
+            decoded_message+=alphabet[(26+position_in_alphabet)-shift_value]
         else:
-            encoded_message+= message[i]
-    return print(f"Here is the encoded result: {encoded_message}")
+            decoded_message+= message[i]
+    return print(f"Here is the encoded result: {decoded_message}")
 
 
 
