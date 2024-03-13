@@ -30,7 +30,7 @@ while user_choice=="yes":
     shift = int(input("Type the shift number:\n"))%26
     caesar(message=text,shift_value=shift,cipher_direction=direction)
     user_choice =input("Type 'yes' if you want to go again. Otherwise type 'no'.\n").lower()
-
+print("Goodbye")
 
 #TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
 #Try running the program and entering a shift number of 45.
