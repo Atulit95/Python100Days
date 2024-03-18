@@ -3,15 +3,15 @@ import calculator_art
 
 def add(n1, n2):
   """Add two numbers."""
-  return n1 + n2
+  return format(n1+n2, ".1f")
  
 def subtract(n1, n2):
   """Calculates difference between two numbers."""
-  return n1 - n2
+  return format(n1-n2, ".1f")
  
 def multiply(n1, n2):
   """Multiplies two numbers"""
-  return n1 * n2
+  return format(n1*n2, ".1f")
  
 def divide(n1, n2):
   """Provides dividion result with 1 decimal point precision"""
@@ -46,7 +46,7 @@ def calculator():
             # elif operation=="/":
             #     result=divide(first_number,second_number)
         print(f"{first_number} {operation_symbol} {second_number} = {result}")
-        first_number=result
+        first_number=float(result)
         continue_calculating=input(f"Type 'y' to continue calculating with {first_number}, or type 'n' to start new calculation: ")
         if continue_calculating=="n":
            print(end="\033c")   # clear the screen for new calculation
