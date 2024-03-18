@@ -22,8 +22,7 @@ operations={
    "*":multiply,
    "/":divide
    }
-restart="y"
-while restart=="y":
+def calculator():
     print(calculator_art.img())  #Display the image of calculator in program
     first_number=float(input("What's the first number: "))
     print("+\n-\n*\n/")
@@ -50,7 +49,7 @@ while restart=="y":
         first_number=result
         continue_calculating=input(f"Type 'y' to continue calculating with {first_number}, or type 'n' to start new calculation: ")
         if continue_calculating=="n":
-           restart="y"
            print(end="\033c")   # clear the screen for new calculation
-
+           calculator()
+calculator()
 
