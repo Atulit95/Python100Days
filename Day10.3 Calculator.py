@@ -37,7 +37,7 @@ while restart=="y":
             second_number=float(input("what's the next number: "))
             calulation_function=operations[operation_symbol]
             result=calulation_function(first_number,second_number)
-#............Another way to use line 38 and 39.Repalce them with below to code to check........................
+#............Another way to use line 38 and 39.Repalce them with below to code to check..........................
             # if operation=="+":
             #     result= add(first_number,second_number)
             # elif operation=='-':
