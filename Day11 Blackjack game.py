@@ -60,11 +60,6 @@
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
 import random
 
-list_of_cards=[11, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-user_cards=[]
-computer_cards=[]
-initial_hand=0
-
 def calculate_sum_of_cards(card_list):
     """returns sum of card drawn"""
     sum_of_card=0
@@ -74,18 +69,76 @@ def calculate_sum_of_cards(card_list):
 
 def check_blackjack(user_card_list,comp_card_list):
     if (10  in user_card_list and 11 in user_card_list):
-        return print("Player win with a blackjack")
+        return "Player"
     if (10 in comp_card_list and 11 in comp_card_list):
-        return print("Computer win with a blackjack")
+        return "Computer"
+
+def check_win(u_total,c_total):
+    if u_total>21:
+        return "Oops! Computer Won 😞"
+    elif c_total>21:
+        return "You Won 😎"
+    elif u_total>c_total:
+        return "You won 😎"
+    elif c_total>u_total:
+        return "Oops! Computer Won 😞"
+    else:
+        return "Draw 🤝"
+    
+def draw(card_list,u_card):
+    u_total=calculate_sum_of_cards(u_card)
+    drawn_card=random.choice(card_list)
+    u_card.append(drawn_card)
+    
+    if drawn_card==11 and drawn_card+u_total>21:
+        return [u_total+1,u_card]
+    else:
+        u_total+=drawn_card
+        return [u_total,u_card]
 
 
+def blackjack():
+    user_cards=[]
+    computer_cards=[]
+    list_of_cards=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+    initial_hand=0
+    if input("Do you want to play blackjack game 'y' or 'n': ")=="y":
+        print(end="\033c")
+        while initial_hand!=2:
+            user_cards.append(random.choice(list_of_cards))
+            computer_cards.append(random.choice(list_of_cards))
+            initial_hand+=1
+        user_total=calculate_sum_of_cards(user_cards)
+        comp_total=calculate_sum_of_cards(computer_cards)
 
-while initial_hand!=2:
-    user_cards.append(random.choice(list_of_cards))
-    computer_cards.append(random.choice(list_of_cards))
-    initial_hand+=1
-print(user_cards)
-print(computer_cards)
-check_blackjack(user_cards,computer_cards)
-print(calculate_sum_of_cards(user_cards))
-print(calculate_sum_of_cards(computer_cards))
+        print(f"Your cards:{user_cards}, current score: {user_total}")
+        print(f"Computer's first card: {computer_cards[0]}")
+
+        if check_blackjack(user_cards,computer_cards)=="Player":
+            print(end="\033c")
+            print(f"Your final hand: {user_cards}, final score: {0}")
+            print(f"Computer's final hand: {computer_cards}, final score: {comp_total}")
+            print("You Won with a Blackjack 😎")
+            blackjack()
+        elif check_blackjack(user_cards,computer_cards)=="Computer":
+            print(end="\033c")
+            print(f"Your final hand: {user_cards}, final score: {user_total}")
+            print(f"Computer's final hand: {computer_cards}, final score: {0}")
+            print("Oops! Computer Won with a Blackjack 😞")
+            blackjack()
+        while user_total< 22:
+            if input("Type 'y' to get another card, type 'n' to pass: ")=="y":
+                user_draw_result=draw(list_of_cards,user_cards)
+                user_total=user_draw_result[0]
+                user_cards=user_draw_result[1]
+                print(f"Now your cards: {user_cards}, current score: {user_total}")
+            else:
+                while comp_total<17:
+                    comp_draw_result=draw(list_of_cards,computer_cards)
+                    computer_cards=comp_draw_result[1]
+                    comp_total=comp_draw_result[0]
+                break
+        
+        print(f"{check_win(user_total,comp_total)}\n Computer cards were: {computer_cards}")
+        blackjack()
+blackjack()
