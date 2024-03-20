@@ -1,20 +1,20 @@
 #Step 5 This is final code to make this Hangman Game user friendly
 
 import random
-import hangman_art_module
+import art_module
 import hangman_word_module
 #TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
 #Delete this line: word_list = ["ardvark", "baboon", "camel"]
 chosen_word = random.choice(hangman_word_module.words())
 word_length = len(chosen_word)
 lives = 7
-stage=hangman_art_module.stages()
+stage=art_module.hangman_stages()
 used_words=[]
 
 
 
 #TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
-print(hangman_art_module.logo())
+print(art_module.logo())
 #Testing code
 # print(f'Pssst, the solution is {chosen_word}.')
 

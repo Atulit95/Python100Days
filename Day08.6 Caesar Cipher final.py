@@ -1,4 +1,4 @@
-import Caesar_Cipher_art
+import art_module
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 def caesar(message,shift_value,cipher_direction):
@@ -15,7 +15,7 @@ def caesar(message,shift_value,cipher_direction):
     return print(f"Here is your {cipher_direction}d result: {converted_message}")
 
 #TODO-1: Import and print the logo from art.py when the program starts.
-print(Caesar_Cipher_art.cipher_art())
+print(art_module.cipher_art())
 
 #TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
 #e.g. Type 'yes' if you want to go again. Otherwise type 'no'.

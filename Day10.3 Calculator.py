@@ -1,5 +1,5 @@
 # Adding the art which displays at the start of the program
-import calculator_art
+import art_module
 
 def add(n1, n2):
   """Add two numbers."""
@@ -23,7 +23,7 @@ operations={
    "/":divide
    }
 def calculator():
-    print(calculator_art.img())  #Display the image of calculator in program
+    print(art_module.calculator_img())  #Display the image of calculator in program
     first_number=float(input("What's the first number: "))
     print("+\n-\n*\n/")
     continue_calculating="y"

@@ -5,8 +5,8 @@
 # 4. If yes then clear the screen using "print(end="\033c")" and Repeat the task 2,3,4
 # 5. At last clear the screen and print the name and amount of player who won the bet.
 
-import auction_art
-print(auction_art.auction_hammer_img())
+import art_module
+print(art_module.auction_hammer_img())
 bidder_available = "yes"
 bidder_list={}
 

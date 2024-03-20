@@ -59,6 +59,7 @@
 
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
 import random
+import art_module
 
 def calculate_sum_of_cards(card_list):
     """returns sum of card drawn"""
@@ -85,8 +86,7 @@ def check_win(u_total,c_total):
     else:
         return "Draw 🤝"
     
-def draw(card_list,u_card):
-    u_total=calculate_sum_of_cards(u_card)
+def draw(card_list,u_card,u_total):
     drawn_card=random.choice(card_list)
     u_card.append(drawn_card)
     
@@ -96,15 +96,23 @@ def draw(card_list,u_card):
         u_total+=drawn_card
         return [u_total,u_card]
 
+def replay():
+    if input("Do you wish to play again. Type 'y' for yes and 'n' for no: ")=='y':
+        blackjack()
+    else:
+        exit()
+
 
 def blackjack():
+    print(end="\033c")
     user_cards=[]
     computer_cards=[]
     list_of_cards=[11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     initial_hand=0
-    if input("Do you want to play blackjack game 'y' or 'n': ")=="y":
-        print(end="\033c")
-        while initial_hand!=2:
+    print(art_module.blackjack_art())
+    game_start_choice=input("Do you want to play Blackjack game 'y' or 'n': ")
+    if game_start_choice=="y":
+        while initial_hand!=2:                                        # Gives both player starting cards
             user_cards.append(random.choice(list_of_cards))
             computer_cards.append(random.choice(list_of_cards))
             initial_hand+=1
@@ -114,31 +122,52 @@ def blackjack():
         print(f"Your cards:{user_cards}, current score: {user_total}")
         print(f"Computer's first card: {computer_cards[0]}")
 
+# Line 126-139 checks for blackjack for both the players
+        
         if check_blackjack(user_cards,computer_cards)=="Player":
             print(end="\033c")
+            print(art_module.blackjack_art())
             print(f"Your final hand: {user_cards}, final score: {0}")
             print(f"Computer's final hand: {computer_cards}, final score: {comp_total}")
             print("You Won with a Blackjack 😎")
-            blackjack()
+            replay()
         elif check_blackjack(user_cards,computer_cards)=="Computer":
             print(end="\033c")
+            print(art_module.blackjack_art())
             print(f"Your final hand: {user_cards}, final score: {user_total}")
             print(f"Computer's final hand: {computer_cards}, final score: {0}")
             print("Oops! Computer Won with a Blackjack 😞")
-            blackjack()
+            replay()
+
+#  👉Line 147-168 checks for following tasks:👈👇
+# 1.Game ends immediately when user score goes over 21 or if the user or computer gets a blackjack.
+# 2.Ask the user if they want to get another card.
+# 3.Once the user is done and no longer wants to draw any more cards, let the computer play. 
+#   The computer should keep drawing cards unless their score goes over 16.
+
         while user_total< 22:
-            if input("Type 'y' to get another card, type 'n' to pass: ")=="y":
-                user_draw_result=draw(list_of_cards,user_cards)
+            draw_choice=input("Type 'y' to draw another card, type 'n' to pass: ")
+            if draw_choice=="y":
+                user_draw_result=draw(list_of_cards,user_cards,user_total)
                 user_total=user_draw_result[0]
                 user_cards=user_draw_result[1]
-                print(f"Now your cards: {user_cards}, current score: {user_total}")
-            else:
+                print(f"Current cards: {user_cards}, current score: {user_total}")
+            elif draw_choice=="n":
                 while comp_total<17:
-                    comp_draw_result=draw(list_of_cards,computer_cards)
+                    comp_draw_result=draw(list_of_cards,computer_cards,comp_total)
                     computer_cards=comp_draw_result[1]
                     comp_total=comp_draw_result[0]
                 break
-        
-        print(f"{check_win(user_total,comp_total)}\n Computer cards were: {computer_cards}")
-        blackjack()
+            else:
+                print("Invalid choice")
+                replay()
+        print(f"{check_win(user_total,comp_total)}")
+        print(f"Computer cards were: {computer_cards}")
+    elif game_start_choice=="n":
+        exit()
+    else:
+        print("Invalid Choice")
+        replay()
+    replay()
+    
 blackjack()
