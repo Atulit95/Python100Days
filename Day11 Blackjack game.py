@@ -58,6 +58,9 @@
 #Hint 13: Create a function called compare() and pass in the user_score and computer_score. If the computer and user both have the same score, then it's a draw. If the computer has a blackjack (0), then the user loses. If the user has a blackjack (0), then the user wins. If the user_score is over 21, then the user loses. If the computer_score is over 21, then the computer loses. If none of the above, then the player with the highest score wins.
 
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+
+#.................Solution using Hint1 and Hint2...........................
+
 import random
 import art_module
 
@@ -127,7 +130,7 @@ def blackjack():
         print(f"Your cards:{user_cards}, current score: {user_total}")
         print(f"Computer's first card: {computer_cards[0]}")
 
-# Line 132-145 checks for blackjack for both the players
+# Line 133-148 checks for blackjack for both the players
         
         if check_blackjack(user_cards,computer_cards)=="Player":
             print(end="\033c")
@@ -144,7 +147,7 @@ def blackjack():
             print("Oops! Computer Won with a Blackjack 😞")
             replay()
 
-#  👉Line 153-176 checks for following tasks:👈👇
+#  👉Line 156-179 checks for following tasks:👈👇
 # 1.Game ends immediately when user score goes over 21 or if the user or computer gets a blackjack.
 # 2.Ask the user if they want to get another card.
 # 3.Once the user is done and no longer wants to draw any more cards, let the computer play. 
