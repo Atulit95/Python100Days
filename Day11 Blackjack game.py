@@ -62,19 +62,21 @@ import random
 import art_module
 
 def calculate_sum_of_cards(card_list):
-    """returns sum of card drawn"""
+    """returns sum of card drawn."""
     sum_of_card=0
     for card in card_list:
         sum_of_card+=card
     return sum_of_card
 
 def check_blackjack(user_card_list,comp_card_list):
+    """Checks who has the Blackjack."""
     if (10  in user_card_list and 11 in user_card_list):
         return "Player"
     if (10 in comp_card_list and 11 in comp_card_list):
         return "Computer"
 
 def check_win(u_total,c_total):
+    """Checks who won the game."""
     if u_total>21:
         return "Oops! Computer Won 😞"
     elif c_total>21:
@@ -87,6 +89,8 @@ def check_win(u_total,c_total):
         return "Draw 🤝"
     
 def draw(card_list,u_card,u_total):
+    "Allows to draw one card."
+    # Condition: After intial hand,If an ace is drawn, count it as 11. But if the total goes over 21, count the ace as 1 instead. 
     drawn_card=random.choice(card_list)
     u_card.append(drawn_card)
     
@@ -97,6 +101,7 @@ def draw(card_list,u_card,u_total):
         return [u_total,u_card]
 
 def replay():
+    """Ask whether player want to play again or not."""
     if input("Do you wish to play again. Type 'y' for yes and 'n' for no: ")=='y':
         blackjack()
     else:
@@ -122,7 +127,7 @@ def blackjack():
         print(f"Your cards:{user_cards}, current score: {user_total}")
         print(f"Computer's first card: {computer_cards[0]}")
 
-# Line 126-139 checks for blackjack for both the players
+# Line 132-145 checks for blackjack for both the players
         
         if check_blackjack(user_cards,computer_cards)=="Player":
             print(end="\033c")
@@ -139,7 +144,7 @@ def blackjack():
             print("Oops! Computer Won with a Blackjack 😞")
             replay()
 
-#  👉Line 147-168 checks for following tasks:👈👇
+#  👉Line 153-176 checks for following tasks:👈👇
 # 1.Game ends immediately when user score goes over 21 or if the user or computer gets a blackjack.
 # 2.Ask the user if they want to get another card.
 # 3.Once the user is done and no longer wants to draw any more cards, let the computer play. 
@@ -160,14 +165,14 @@ def blackjack():
                 break
             else:
                 print("Invalid choice")
-                replay()
+                replay()           # Ask player for reply when player press any Invalid character
         print(f"{check_win(user_total,comp_total)}")
         print(f"Computer cards were: {computer_cards}")
     elif game_start_choice=="n":
         exit()
     else:
         print("Invalid Choice")
-        replay()
-    replay()
+        replay()    # Ask player for reply when player press any Invalid character
+    replay()   # Ask player for reply when game ends
     
 blackjack()
