@@ -28,21 +28,23 @@ def play(attempts,real_number):
                 print(f"You got it!👏 The answer was {real_number}.")
                 replay()
             elif guess<real_number:
-                print("Too Low.😞\nGuess again.")
+                print("Too Low.😞\nWrong Guess.")
                 attempts-=1
                 continue
             elif guess>real_number:
-                print("Too High.😞\nGuess again.")
+                print("Too High.😞\nWrong Guess.")
                 attempts-=1
                 continue
-    print(f"You Lost the game.😞The number was {real_number}")
+    print(f"\nYou Lost the game.😞The number was {real_number}")
+    replay()
 
 
 def guess_the_number_game():
+    print(art_module.guess_the_number_art())
     print("Welcome to the Number Guessing Game!")
     print("I'm thinking of a number between 1 and 100.")
     actual_number=random.randrange(1,100)
-    print(actual_number)
+    # print(actual_number)  # use this to test the code.
     difficulty=input("Choose a difficulty. Type 'easy' or 'hard' or 'extreme': ")
     if difficulty=="easy":
         number_of_attempts=10
@@ -56,4 +58,5 @@ def guess_the_number_game():
     else:
         print("Invalid Choice")
         replay()
+
 guess_the_number_game()
