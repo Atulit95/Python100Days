@@ -24,9 +24,9 @@ def game():
         two_celebs=random.sample(data,2)
         print(art_module.higher_or_lower())
         # print(f'{two_celebs[0]['follower_count']}  {two_celebs[1]['follower_count']}')      //To check the program or to cheat
-        print(f'Compare A: {two_celebs[0]['name']}, {two_celebs[0]['description']}, {two_celebs[0]['country']}')
+        print(f'Compare A: {two_celebs[0]['name']}, a {two_celebs[0]['description']}, {two_celebs[0]['country']}')
         print(art_module.vs())
-        print(f'Against B: {two_celebs[1]['name']}, {two_celebs[1]['description']}, {two_celebs[1]['country']}')
+        print(f'Against B: {two_celebs[1]['name']}, a {two_celebs[1]['description']}, {two_celebs[1]['country']}')
         user_choice=input("Who has more followers? Type 'A' or 'B': ").upper()
         print(end="\033c")
         if compare(two_celebs)==user_choice:
