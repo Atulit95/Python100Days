@@ -21,7 +21,6 @@ for turtles in range(0, 7):
     y_gap += 50
     turtle_list.append(new_turtle)
 
-
 if userbet:
     is_race_on = True
 
