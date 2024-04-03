@@ -2,6 +2,9 @@ from turtle import Turtle
 from food import Food
 import random
 
+ALIGNMENT = "center"
+FONT_STYLE = ("Courier", 24, "normal")
+
 
 class Score(Turtle):
 
@@ -11,7 +14,18 @@ class Score(Turtle):
         self.penup()
         self.hideturtle()
         self.color("White")
-        self.goto(0, 280)
-        self.write(
-            f"Score: {self.score}", True, align="center", font=("Arial", 15, "normal")
-        )
+        self.goto(0, 270)
+        self.update_Score()
+
+    def update_Score(self) :   
+        self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT_STYLE)
+        
+    def gameOver(self):
+        self.goto(0,0)
+        self.write("Game Over",align=ALIGNMENT,font=FONT_STYLE)
+
+    def increase_Score(self):
+        self.score += 1
+        self.goto(0, 270)
+        self.clear()
+        self.update_Score()
