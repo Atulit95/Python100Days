@@ -1,7 +1,5 @@
 from turtle import Turtle
 
-PADDLES_POSITION = ((450, 0), (-450, 0))
-
 
 class Paddles(Turtle):
     def __init__(self, position) -> None:
