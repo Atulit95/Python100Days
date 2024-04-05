@@ -2,6 +2,7 @@ from turtle import Screen
 from padles import Paddles
 from Pong_Game_Ball import Ball
 import time
+from Pong_game_Scoreboard import Scoreboard
 
 screen = Screen()
 screen.setup(width=1000, height=800)
@@ -14,6 +15,8 @@ game_is_on = True
 l_paddle = Paddles((-470, 0))
 r_paddle = Paddles((470, 0))
 ball = Ball()
+l_score = Scoreboard(-100, 300)
+r_score = Scoreboard(100, 300)
 
 screen.listen()
 screen.onkeypress(l_paddle.goup, "w")
@@ -41,8 +44,14 @@ while game_is_on:
         ball.bounce_x()
 
     # Detect when r_paddles misses
-    if ball.xcor() > 500 or ball.xcor() < -500:
+    if ball.xcor() > 500:
         ball.reset_position()
+        l_score.l_scored()
+
+    # Detect when l_paddles misses
+    if ball.xcor() < -500:
+        ball.reset_position()
+        r_score.r_scored()
 
 
 screen.exitonclick()
