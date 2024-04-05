@@ -11,8 +11,8 @@ screen.tracer(0)
 
 game_is_on = True
 
-l_paddle = Paddles((-485, 0))
-r_paddle = Paddles((475, 0))
+l_paddle = Paddles((-470, 0))
+r_paddle = Paddles((470, 0))
 ball = Ball()
 
 screen.listen()
@@ -27,7 +27,18 @@ while game_is_on:
     screen.update()
     ball.move()
 
-    if ball.ycor() > 390 or ball.ycor() < -390:
-        ball.bounce()
+    # detect collision with walls
+    if ball.ycor() > 390 or ball.ycor() < -380:
+        ball.bounce_y()
+
+    # Detect Collision with r_paddle
+    if (
+        ball.distance(r_paddle) < 50
+        or ball.xcor() > 440
+        or ball.distance(l_paddle) < 50
+        or ball.xcor() < -440
+    ):
+        ball.bounce_x()
+
 
 screen.exitonclick()
