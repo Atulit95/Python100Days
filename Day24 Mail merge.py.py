@@ -13,8 +13,6 @@ with open("Input/Names/invited_names.txt") as names:
 
 with open("Input/Letters/starting_letter.txt") as letter:
     content = letter.read()
-# print(name_list)
-# print(content)
 
 for person in name_list:
     person = person.strip("\n")
