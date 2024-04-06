@@ -9,7 +9,10 @@ class Score(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.highscore = 0  # (updated on day24)
+        with open(
+            "snakeGame_data.txt", mode="r"
+        ) as highest_score:  # (updated on day24)
+            self.highscore = int(highest_score.read())
         self.penup()
         self.hideturtle()
         self.color("White")
@@ -27,6 +30,8 @@ class Score(Turtle):
     def reset(self):  # added on day24
         if self.score > self.highscore:
             self.highscore = self.score
+            with open("snakeGame_data.txt", mode="w") as highest_score:
+                highest_score.write(f"{self.highscore}")
         self.score = 0
 
     # def gameOver(self):            # Commented on day24
