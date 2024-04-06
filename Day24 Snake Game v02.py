@@ -45,13 +45,17 @@ while game_is_on:
         or snake.head.xcor() < -290
         or snake.head.ycor() < -280
     ):
-        game_is_on = False
-        score.highest_score()
+        # game_is_on = False    #commented on day24
+        # score.gameOver()
+        score.reset()  # Added on day24
+        snake.reset()
 
     # Detect collision with Tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            score.highest_score()
+            # game_is_on = False    #commented on day24
+            # score.gameOver()
+            score.reset()  # Added on day24
+            snake.reset()
 
 screen.exitonclick()

@@ -53,3 +53,10 @@ class Snake:
     def turn_right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def reset(self):  # Added on day24
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]

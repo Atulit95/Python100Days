@@ -19,7 +19,7 @@ class Score(Turtle):
     def update_Score(self):
         self.clear()
         self.write(
-            f"Score: {self.score}| Highest Score: {self.highscore}",
+            f"Score: {self.score} | Highest Score: {self.highscore}",
             align=ALIGNMENT,
             font=FONT_STYLE,
         )
