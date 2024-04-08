@@ -16,10 +16,10 @@ food = Food()
 score = Score()
 
 screen.listen()
-screen.onkeypress(key="Up", fun=snake.turn_up)
-screen.onkeypress(key="Down", fun=snake.turn_down)
-screen.onkeypress(key="Left", fun=snake.turn_left)
-screen.onkeypress(key="Right", fun=snake.turn_right)
+screen.onkeypress(key="w", fun=snake.turn_up)
+screen.onkeypress(key="s", fun=snake.turn_down)
+screen.onkeypress(key="a", fun=snake.turn_left)
+screen.onkeypress(key="d", fun=snake.turn_right)
 
 
 game_is_on = True
@@ -45,12 +45,12 @@ while game_is_on:
         or snake.head.ycor() < -280
     ):
         game_is_on = False
-        score.gameOver()
+        score.reset()
 
     # Detect collision with Tail
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_is_on = False
-            score.gameOver()
+            score.reset()
 
 screen.exitonclick()
