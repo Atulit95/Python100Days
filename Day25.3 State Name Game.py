@@ -7,6 +7,7 @@ IMAGE = "blank_states_img.gif"
 
 screen = turtle.Screen()
 screen.title("State Name Game")
+screen.setup(width=725, height=491)
 
 screen.addshape(IMAGE)
 turtle.shape(IMAGE)
