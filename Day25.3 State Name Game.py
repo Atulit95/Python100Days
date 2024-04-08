@@ -1,3 +1,5 @@
+# Our goal is to create game which is simmilar to game in given link
+# Link:- "https://www.sporcle.com/games/g/states"
 import turtle
 import pandas
 
