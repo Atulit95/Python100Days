@@ -30,10 +30,9 @@ while len(guessed_state) < 50:
         t.goto(int(state_detail.x), int(state_detail.y))
         t.write(answer_state)
     if answer_state == "Exit":
-        missing_state = []
-        for state in state_list:
-            if state not in guessed_state:
-                missing_state.append(state)
+        missing_state = [
+            state for state in state_list if state not in guessed_state
+        ]  # updated here on day26
         break
 
 missed_state = pandas.DataFrame(missing_state)
