@@ -1,5 +1,6 @@
-# let say we have have to increase every no of list by 1
+# >>>>>>>>>>>>>>>>>>>>>>>>>>> List Comprehension <<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+# let say we have have to increase every no of list by 1
 # ..............using Loops...................
 numbers = [1, 2, 3]
 new_list = []
@@ -30,4 +31,20 @@ range_list = [double * 2 for double in range(1, 5)]
 name = ["Alex", "Beth", "Caroline", "Dave", "Freddie"]
 
 short_names = [names.upper() for names in name if len(names) > 5]
-print(short_names)
+# print(short_names)
+
+
+# >>>>>>>>>>>>>>>>>>>>>>>>> Dictionary Comprehension <<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# Syntax:-- new_dict = {new_key:new_value for (key,value) in dict.items() if test}
+import random
+
+student_score = {student: random.randint(1, 100) for student in name}
+# print(student_score)
+
+# iterating through dic in dic. comprehension
+
+passed_students = {
+    student: score for (student, score) in student_score.items() if score > 35
+}
+print(passed_students)
