@@ -8,6 +8,10 @@ students_dict = {
 student_dataframe = pandas.DataFrame(students_dict)
 # print(student_dataframe)
 
-# iteration over Dataframe
-for key, value in student_dataframe.items():
-    print(value)
+# iteration over Dataframe(via columns)
+# for key, value in student_dataframe.items():
+# print(value)
+
+# via rows
+for index, row in student_dataframe.iterrows():
+    print(row.score)
