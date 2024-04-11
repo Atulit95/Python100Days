@@ -12,10 +12,6 @@ user_input = input("Enter Your word: ").upper()
 
 phonetics = {row.letter: row.code for index, row in data.iterrows()}
 
-# phonetics = [value for key, value in data_dic if key in user_input]
-# for letter in user_input:
-#     for key, value in data_dic.iterrows():
-#         if value == letter:
-#             phonetics.append(letter.code)
+Nato_words = [phonetics[new_item] for new_item in user_input]
 
-print(phonetics)
+print(Nato_words)
