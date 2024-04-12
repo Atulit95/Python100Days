@@ -29,6 +29,7 @@ my_car = Car(make="nisan", model="GTr")
 # if we dont pass second aregumnent in above code
 # it going to give us key error to avoid this error we use
 # get() method it is same as square brackets but instead of error it will give us value "None"
+
 # my_car2 = Car(make="Hyundai")
 
 
