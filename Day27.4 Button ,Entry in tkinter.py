@@ -1,7 +1,7 @@
 from tkinter import *
 
 window = Tk()
-window.title("Button")
+window.title("First GUI program")
 window.minsize(width=500, height=500)
 
 my_label = Label(text="I am a Label", font=("Algerian", 24))
