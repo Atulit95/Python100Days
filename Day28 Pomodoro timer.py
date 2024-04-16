@@ -1,3 +1,4 @@
+# here our goal is to create a Pomodoro timer using tkinter
 from tkinter import *
 import math
 
