@@ -4,10 +4,16 @@ import random
 import time
 
 BACKGROUND_COLOR = "#B1DDC6"
-# ------------------------------- FLASH CARD FRON DISPLAY-------------------#
-data = pandas.read_csv("FlashCard_french_words.csv")
-to_learn = data.to_dict(orient="records")
 current_card = {}
+to_learn = {}
+# ------------------------------- FLASH CARD FRON DISPLAY-------------------#
+try:
+    data = pandas.read_csv("flashcard_save.csv")
+except FileNotFoundError:
+    original_data = pandas.read_csv("FlashCard_french_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
 
 
 def generate_word():
@@ -30,7 +36,7 @@ def is_known():
     to_learn.remove(current_card)
     generate_word()
     data = pandas.DataFrame(to_learn)
-    data.to_csv("flashcard_save.csv")
+    data.to_csv("flashcard_save.csv", index=FALSE)
 
 
 # ------------------------------ UI DESIGN ---------------------------------#
@@ -49,13 +55,13 @@ word = canvas.create_text(400, 300, text="", font=("Aerial", 60, "bold"))
 canvas.grid(row=0, column=0, columnspan=2)
 
 cross_img = PhotoImage(file="FlashCard_images\wrong.png")
-cross_button = Button(image=cross_img, border=0, highlightthickness=0, command=is_known)
+cross_button = Button(
+    image=cross_img, border=0, highlightthickness=0, command=generate_word
+)
 cross_button.grid(row=1, column=0)
 
 check_img = PhotoImage(file="FlashCard_images\check.png")
-check_button = Button(
-    image=check_img, border=0, highlightthickness=0, command=generate_word
-)
+check_button = Button(image=check_img, border=0, highlightthickness=0, command=is_known)
 check_button.grid(row=1, column=1)
 
 generate_word()
