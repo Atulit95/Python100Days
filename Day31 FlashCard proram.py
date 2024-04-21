@@ -39,7 +39,7 @@ def is_known():
     data.to_csv("flashcard_save.csv", index=FALSE)
 
 
-# ------------------------------ UI DESIGN ---------------------------------#
+# ------------------------------ UI DESIGN ----------------------------------#
 window = Tk()
 window.title("Flash Card Program")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
