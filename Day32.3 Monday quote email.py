@@ -9,7 +9,7 @@ password = "miuvmsytawmhlman"
 
 now = dt.datetime.now()
 weekday = now.weekday()
-if weekday == 6:
+if weekday == 0:
     # print(weekday)
     with open(file="email_quotes.txt", mode="r") as quote:
         quote_list = quote.readlines()
