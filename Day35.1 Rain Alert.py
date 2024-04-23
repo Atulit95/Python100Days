@@ -1,10 +1,9 @@
 import requests
 
-# api_key = "c4bff11fd17bdf9b4d06905ac4c19079"
 parameter = {
     "lat": 26.449923,
     "lon": 80.331871,
-    "appid": "c4bff11fd17bdf9b4d06905ac4c19079",
+    "appid": "your API key",
     "cnt": 4,
 }
 

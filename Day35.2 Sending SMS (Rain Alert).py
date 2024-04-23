@@ -1,6 +1,18 @@
 import requests
+from twilio.rest import Client
 
-# api_key = "c4bff11fd17bdf9b4d06905ac4c19079"
+account_sid = "ACbc0ff2189cba7187b398f222a41e4bf0"
+auth_token = "32fb76e40a51cf9f542bd1c39653b9e1"
+client = Client(account_sid, auth_token)
+
+message = client.messages.create(
+    body="It's going to rain today⛈️⛈️.Take Your Umbrella ☂️☂️",
+    from_="+12562039313",
+    to="+919555943149",
+)
+
+print(message.sid)
+
 parameter = {
     "lat": 26.449923,
     "lon": 80.331871,
