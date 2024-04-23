@@ -13,6 +13,10 @@ response = requests.get(
 )
 response.raise_for_status()
 weather_data = response.json()
-for i in range(0, len(weather_data["list"])):
-    if weather_data["list"][i]["weather"][0]["id"] < 700:
-        print("Take Your Umberella with you.")
+will_rain = False
+for hour_data in weather_data["list"]:
+    if hour_data["weather"][0]["id"] < 900:
+        will_rain = True
+
+if will_rain:
+    print("Bring your Umbrella")
