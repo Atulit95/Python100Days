@@ -7,8 +7,8 @@ import random
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
-account_sid = "ACbc0ff2189cba7187b398f222a41e4bf0"
-auth_token = "2c7418e9f93599422f880b43599ecae8"
+account_sid = "your_twilio_acc_sid"
+auth_token = "your_twilio_auth_token"
 
 
 def percent_incr_or_decr(previous_day_data, day_before_previous_day_data):
@@ -56,12 +56,12 @@ tesla_stock_parameters = {
     "function": "TIME_SERIES_DAILY",
     "symbol": STOCK,
     "outputsize": "compact",
-    "apikey": "YIR4JGPZ7LXSA67E",
+    "apikey": "your_time_series_apikey",
 }
 news_api_parameters = {
     "q": "tesla",
     "sortBy": "publishedAt",
-    "apiKey": "581ed055fac4465ba2023cdeadb1e60f",
+    "apiKey": "your_news_api_key",
     "language": "en",
 }
 
@@ -96,10 +96,10 @@ if (yesterday_closing_data - day_before_yesterday_closing_data) > 0:
 else:
     body_text = f"TSLA: 🔻{percentage_value}%\nHeadline:{news_list[0][choice]}.\nBrief: {news_list[1][choice]}\nUrl:{news_list[2][choice]}"
 
-if percentage_value > 0:
+if percentage_value > 5:
     client = Client(account_sid, auth_token)
     message = client.messages.create(
-        body=body_text, from_="+12562039313", to="your_verified_no"
+        body=body_text, from_="your_twilio_no", to="your_verified_no"
     )
 
 
