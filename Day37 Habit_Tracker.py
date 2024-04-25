@@ -35,5 +35,12 @@ pixela_header = {"X-USER-TOKEN": TOKEN}
 # pixela_graph_response = requests.post(
 #     url=pixela_graph_endpoint, json=pixela_graph_parameter, headers=pixela_header
 # )
-pixela_data_response=requests.post(url=f"{pixela_graph_endpoint}/{pixela_graph_parameter["id"]}",json=pixela_records_parameters,headers=pixela_header)
-print(pixela_data_response.text)
+# pixela_data_response=requests.post(url=f"{pixela_graph_endpoint}/{pixela_graph_parameter["id"]}",json=pixela_records_parameters,headers=pixela_header)
+
+# To Update a pixel
+# pixela_update_response=requests.put(url=f"{pixela_graph_endpoint}/{pixela_graph_parameter["id"]}/20240423",json={"quantity":"7.3"},headers=pixela_header)
+
+# To delete a pixel
+pixela_delete_response=requests.delete(url=f"{pixela_graph_endpoint}/{pixela_graph_parameter["id"]}/20240423",json={"quantity":"7.3"},headers=pixela_header)
+
+print(pixela_delete_response.text)
