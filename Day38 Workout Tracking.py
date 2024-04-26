@@ -16,6 +16,9 @@ headers = {
 }
 para = {"query": excercise_text, "gender": "male"}
 
+# providing bearer_auth for sheety
+bearer_headers = {"Authorization": "Bearer dniq70413h8h9298u2kd2"}
+
 
 response = requests.post(url=Nutrinox_end_point, json=para, headers=headers)
 result = response.json()
@@ -34,6 +37,8 @@ for exercise in result["exercises"]:
         }
     }
 
-    sheet_response = requests.post(sheety_endpoint, json=sheet_inputs)
+    sheet_response = requests.post(
+        sheety_endpoint, json=sheet_inputs, headers=bearer_headers
+    )
 
     print(sheet_response.text)
