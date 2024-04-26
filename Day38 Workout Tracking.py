@@ -1,12 +1,14 @@
 # You have to pre-define the headings like 'Date','Time',...previously at the time of sheet creation to post data to those rows.
+# You can also hide you credentials using enviroment variable
+
 import requests
 from datetime import datetime
 
-NUTRITIONIX_APP_ID = "7f4cfde2"
-NUTRITIONIX_API_KEY = "9bbca1431e842815f407d7c7139a2cb1"
+NUTRITIONIX_APP_ID = "your_app_id"
+NUTRITIONIX_API_KEY = "your_key"
 
 Nutrinox_end_point = "https://trackapi.nutritionix.com/v2/natural/exercise"
-sheety_endpoint = "https://api.sheety.co/45cecaf5b844e88d6d4b1405ac9b2e64/workout/data"
+sheety_endpoint = "your_sheety_endpoint"
 
 excercise_text = input("Tell me which excercise you did?")
 headers = {
@@ -17,7 +19,9 @@ headers = {
 para = {"query": excercise_text, "gender": "male"}
 
 # providing bearer_auth for sheety
-bearer_headers = {"Authorization": "Bearer dniq70413h8h9298u2kd2"}
+bearer_headers = {
+    "Authorization": "Bearer your_auth"
+}  # Only change "your_auth" not the 'Bearer' with your value
 
 
 response = requests.post(url=Nutrinox_end_point, json=para, headers=headers)
