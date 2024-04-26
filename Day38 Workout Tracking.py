@@ -1,9 +1,12 @@
+# You have to pre-define the headings like 'Date','Time',...previously at the time of sheet creation to post data to those rows.
 import requests
+from datetime import datetime
 
 NUTRITIONIX_APP_ID = "7f4cfde2"
 NUTRITIONIX_API_KEY = "9bbca1431e842815f407d7c7139a2cb1"
 
 Nutrinox_end_point = "https://trackapi.nutritionix.com/v2/natural/exercise"
+sheety_endpoint = "https://api.sheety.co/45cecaf5b844e88d6d4b1405ac9b2e64/workout/data"
 
 excercise_text = input("Tell me which excercise you did?")
 headers = {
@@ -16,4 +19,21 @@ para = {"query": excercise_text, "gender": "male"}
 
 response = requests.post(url=Nutrinox_end_point, json=para, headers=headers)
 result = response.json()
-print(result)
+
+today_date = datetime.now().strftime("%d/%m/%Y")
+now_time = datetime.now().strftime("%X")
+
+for exercise in result["exercises"]:
+    sheet_inputs = {
+        "datum": {
+            "date": today_date,
+            "time": now_time,
+            "exercise": exercise["name"].title(),
+            "duration": exercise["duration_min"],
+            "calories": exercise["nf_calories"],
+        }
+    }
+
+    sheet_response = requests.post(sheety_endpoint, json=sheet_inputs)
+
+    print(sheet_response.text)
