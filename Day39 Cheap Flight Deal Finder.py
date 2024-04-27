@@ -2,4 +2,4 @@ from Own_fligt_data import DataManager
 
 data = DataManager()
 
-print(data)
+print(data.data_dic())
