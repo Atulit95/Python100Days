@@ -13,4 +13,16 @@ all_anchor_tag=soup.find_all(name="a")
 
 for tag in all_anchor_tag:
         # print(tag.getText())        getText() is used to get text within tag 
-    print(tag.get("href"))
+    # print(tag.get("href"))           to find by attribute
+    pass
+heading=soup.find(name="h1",id="name")   #To find using id, similarly for class
+# print(heading.string)
+
+company_url=soup.select_one(selector="p a")
+# print(company_url)
+
+name=soup.select_one(selector="#name")      # To select via id
+# print(name)
+
+headings=soup.select(selector=".heading")
+print(headings)
