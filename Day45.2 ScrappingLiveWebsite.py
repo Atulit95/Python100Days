@@ -20,8 +20,8 @@ for article_tag in articles:
     links=article_tag.find("a").get("href")
     article_links.append(links)
 
-print(article_links)
-print(article_texts)
+# print(article_links)
+# print(article_texts)
 
 
 articles_links=[title.get("href") for title in articles]
@@ -29,5 +29,11 @@ articles_links=[title.get("href") for title in articles]
 # article_link=articles.get("href")
 # print(article_link)
 
-articles_score=[score.getText() for score in soup.find_all(name="span",class_="score")]
-print(articles_score)
+articles_score=[int(score.getText().split()[0]) for score in soup.find_all(name="span",class_="score")]
+# print(articles_score)
+
+index=articles_score.index(max(articles_score))
+print(article_texts[index])
+print(article_links[index])
+print(articles_score[index])
+      
