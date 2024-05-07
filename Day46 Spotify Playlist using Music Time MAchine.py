@@ -1,6 +1,12 @@
 import datetime as dt
 import requests
 from bs4 import BeautifulSoup
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
+
+CLIENT_SECRET="8ac71543bae6440f9aef3a4d559f9bf3"
+CLIENT_ID="5f82dfbdd6864b96ba27665af2635f4a"
 
 curr_date = dt.datetime.now().date()
 
@@ -44,4 +50,17 @@ billboard_website = response.text
 soup = BeautifulSoup(billboard_website, "html.parser")
 
 list = [title.getText().strip() for title in soup.select("li ul li h3")]
-print(list)
+
+
+# ---------------------------------------------------------------------
+
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
+                                               client_secret=CLIENT_SECRET,
+                                               redirect_uri="http://localhost:3000",
+                                               scope = "playlist-modify-public"))
+
+user_id=sp.current_user()["id"]
+if(sp.current_user_playlists()["name"])
+sp.user_playlist_create(user=user_id,name="Moosic",public=True)
+sp.user_playlist_add_tracks(user=user_id,playlist_id="Moosic",tracks=list)
