@@ -22,10 +22,12 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                redirect_uri="http://localhost:3000",
                                                scope = "user-library-read"))
 
-td=sp.current_user_playlists()["items"]
-list_of_playlist={}
-for i in range(0,len(td)):
-    list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
+track="Hass Hass"+" "+"2024"
+td=sp.search(q=track,type=["artist","track"],market="IN")
+print(td)
+# list_of_playlist={}
+# for i in range(0,len(td)):
+#     list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
 
-if "Soul" in list_of_playlist:
-    print(list_of_playlist["Soul"])
+# if "Soul" in list_of_playlist:
+#     print(list_of_playlist)

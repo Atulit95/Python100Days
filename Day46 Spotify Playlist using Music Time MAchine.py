@@ -34,6 +34,13 @@ def valid_date_checker(date):
             )
         )
 
+def dic_of_playlist_details():
+    td=sp.current_user_playlists()["items"]
+    list_of_playlist={}
+    for i in range(0,len(td)):
+        list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
+
+    return list_of_playlist
 
 date = valid_date_checker(
     input(
@@ -63,12 +70,12 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
 user_playlist_name=input("Enter palylist name you desire:\n")
 
 user_id=sp.current_user()["id"]
-td=sp.current_user_playlists()["items"]
-list_of_playlist={}
-for i in range(0,len(td)):
-    list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
 
+list_of_playlist=dic_of_playlist_details()
 if(user_playlist_name in list_of_playlist):
-    sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],tracks=list)
-sp.user_playlist_create(user=user_id,name="Moosic",public=True)
-sp.user_playlist_add_tracks(user=user_id,playlist_id="Moosic",tracks=list)
+    for track in list:
+        song=sp.search(f"track{track}year{date[0:4]}")
+        sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],tracks=song,position=0)
+# else:
+#     sp.user_playlist_create(user=user_id,name="Moosic",public=True)
+#     sp.user_playlist_add_tracks(user=user_id,playlist_id="Moosic",tracks=list)
