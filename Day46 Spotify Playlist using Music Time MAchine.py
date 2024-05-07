@@ -60,7 +60,15 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                redirect_uri="http://localhost:3000",
                                                scope = "playlist-modify-public"))
 
+user_playlist_name=input("Enter palylist name you desire:\n")
+
 user_id=sp.current_user()["id"]
-if(sp.current_user_playlists()["name"])
+td=sp.current_user_playlists()["items"]
+list_of_playlist={}
+for i in range(0,len(td)):
+    list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
+
+if(user_playlist_name in list_of_playlist):
+    sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],tracks=list)
 sp.user_playlist_create(user=user_id,name="Moosic",public=True)
 sp.user_playlist_add_tracks(user=user_id,playlist_id="Moosic",tracks=list)

@@ -21,4 +21,11 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                client_secret=CLIENT_SECRET,
                                                redirect_uri="http://localhost:3000",
                                                scope = "user-library-read"))
-print(sp.current_user_playlists())
+
+td=sp.current_user_playlists()["items"]
+list_of_playlist={}
+for i in range(0,len(td)):
+    list_of_playlist[f"{(td[i]["name"])}"]=f'{td[i]["id"]}'
+
+if "Soul" in list_of_playlist:
+    print(list_of_playlist["Soul"])
