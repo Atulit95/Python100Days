@@ -72,10 +72,16 @@ user_playlist_name=input("Enter palylist name you desire:\n")
 user_id=sp.current_user()["id"]
 
 list_of_playlist=dic_of_playlist_details()
+songs_uri=[]
 if(user_playlist_name in list_of_playlist):
     for track in list:
-        song=sp.search(f"track{track}year{date[0:4]}")
-        sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],tracks=song,position=0)
+        td=(sp.search(q=f"{track} {date[0:4]}",type="track")["tracks"]["items"][0]["album"]["id"])
+        songs_uri.append(sp._get_uri(type=track,id=td))
+        
+# sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],tracks=songs_uri,position=None)
+        
 # else:
 #     sp.user_playlist_create(user=user_id,name="Moosic",public=True)
 #     sp.user_playlist_add_tracks(user=user_id,playlist_id="Moosic",tracks=list)
+
+print(songs_uri)
