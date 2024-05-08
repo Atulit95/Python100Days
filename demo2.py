@@ -21,9 +21,12 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID,
                                                client_secret=CLIENT_SECRET,
                                                redirect_uri="http://localhost:3000",
                                                scope = "user-library-read"))
-
+user_id=sp.current_user()["id"]
 track="Hass Hass"+" "+"2024"
-td=sp.search(q=track,type=["artist","track"],market="IN")
+td=sp.search(q=track,type="track")["tracks"]["items"][0]["uri"]
+sp.user_playlist_add_tracks(user=user_id,playlist_id=list_of_playlist[user_playlist_name],uris=uri,position=0)
+
+# tl=sp.track("spotify:track:"+td)
 print(td)
 # list_of_playlist={}
 # for i in range(0,len(td)):
@@ -31,3 +34,4 @@ print(td)
 
 # if "Soul" in list_of_playlist:
 #     print(list_of_playlist)
+
