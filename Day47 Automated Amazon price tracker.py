@@ -7,5 +7,5 @@ product_page=response.text
 # print(product_page)
 
 soup=BeautifulSoup(product_page,"lxml")
-price=soup.select(selector=".za-price-whole")
+price=soup.select(selector="a-price-whole")
 print(price)
