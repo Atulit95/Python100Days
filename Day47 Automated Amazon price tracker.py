@@ -17,7 +17,7 @@ soup=BeautifulSoup(product_page,"lxml")
 price=soup.find(class_="a-offscreen").getText()
 price=float(price.split("$")[1])
 
-if price>DESIRED_PRICE:
+if price<DESIRED_PRICE:
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(user=my_email, password=password)
