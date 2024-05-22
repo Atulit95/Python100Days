@@ -1,3 +1,4 @@
+# Our goal is to send Email to the Client whenever the price of item is below his/her desired price 
 import requests
 from bs4 import BeautifulSoup
 import smtplib
