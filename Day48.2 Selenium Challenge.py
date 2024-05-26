@@ -19,7 +19,7 @@ list1=driver.find_elements(By.XPATH,'//*[@id="content"]/div/section/div[2]/div[2
 i=0
 for li in list1:
     dict[i]={"time":f"{li.text}-2024",
-             "event":f"{li.find_element(By.XPATH,f"//*[@id='content']/div/section/div[2]/div[1]/div/ul/li[{i+1}]/a").text}"}
+             "event":f"{driver.find_element(By.XPATH,f"//*[@id='content']/div/section/div[2]/div[2]/div/ul/li[{1+i}]/a").text}"}
     i+=1
     
 print(dict)
