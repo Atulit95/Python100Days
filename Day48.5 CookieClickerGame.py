@@ -23,7 +23,7 @@ while count!=0:
     count-=1
 # cookie_amount=driver.find_element(By.ID,"money")
 
-hello
+
 
 cursor_redeem_value=driver.find_element(By.CSS_SELECTOR,"#buyCursor b").text.split()[-1]
 print(cursor_redeem_value)
