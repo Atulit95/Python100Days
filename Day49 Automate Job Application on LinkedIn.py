@@ -4,7 +4,8 @@ from selenium.webdriver.common.keys import Keys
 import time
 
 def replace(path,text):
-    "This function replaces the"
+    "This function replaces the text of input field"
+    #Note: For this to work the the input field must be filled with some previous recomended value.
     driver.find_element(By.XPATH,path).clear()
     driver.find_element(By.XPATH,path).send_keys(text)
     driver.find_element(By.XPATH,path).send_keys(Keys.ENTER)
