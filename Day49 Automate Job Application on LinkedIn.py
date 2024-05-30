@@ -1,7 +1,7 @@
+#This program doesn't work if linkedin Captcha page shows up.
 from selenium import webdriver as wd
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import time
 
 def replace(path,text):
     "This function replaces the text of input field"
@@ -23,8 +23,8 @@ driver.get("https://www.linkedin.com/jobs/search/?f_LF=f_AL&geoId=102257491&keyw
 
 #Manages Login Credentials
 driver.find_element(By.XPATH,"/html/body/div[1]/header/nav/div/a[2]").click()
-driver.find_element(By.ID,"username").send_keys("gojay78158@jahsec.com")
-driver.find_element(By.ID,"password").send_keys("998877@At")
+driver.find_element(By.ID,"username").send_keys("Your email or Contact No.")
+driver.find_element(By.ID,"password").send_keys("Your Password")
 driver.find_element(By.XPATH,"//*[@id='organic-div']/form/div[3]/button").click()
 
 #Replaces Search bar for desired job.
