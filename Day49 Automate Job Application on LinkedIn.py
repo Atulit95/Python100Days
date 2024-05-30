@@ -10,15 +10,19 @@ def replace(path,text):
     driver.find_element(By.XPATH,path).send_keys(text)
     driver.find_element(By.XPATH,path).send_keys(Keys.ENTER)
 
+# Keep browser open after program finishes
 chrome_option=wd.ChromeOptions()
 chrome_option.add_experimental_option("detach",True)
 
+# create and Configure the browser
 driver=wd.Chrome(chrome_option)
-driver.maximize_window()
+driver.maximize_window() # opens window in maximised view.
 
+#Opens linkedin Login page.
 driver.get("https://www.linkedin.com/jobs/search/?f_LF=f_AL&geoId=102257491&keywords=python%20developer&location=London%2C%20England%2C%20United%20Kingdom&redirect=false&position=1&pageNum=0")
-driver.find_element(By.XPATH,"/html/body/div[1]/header/nav/div/a[2]").click()
 
+#Manages Login Credentials
+driver.find_element(By.XPATH,"/html/body/div[1]/header/nav/div/a[2]").click()
 driver.find_element(By.ID,"username").send_keys("gojay78158@jahsec.com")
 driver.find_element(By.ID,"password").send_keys("998877@At")
 driver.find_element(By.XPATH,"//*[@id='organic-div']/form/div[3]/button").click()
