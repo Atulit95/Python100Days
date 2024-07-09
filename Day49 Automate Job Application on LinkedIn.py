@@ -22,7 +22,7 @@ def abort():
 chrome_option=wd.ChromeOptions()
 chrome_option.add_experimental_option("detach",True)
 
-# create and Configure the browser
+# Create and configure the browser
 driver=wd.Chrome(chrome_option)
 driver.maximize_window() # opens window in maximised view.
 
