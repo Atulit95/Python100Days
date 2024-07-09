@@ -31,8 +31,8 @@ driver.get("https://www.linkedin.com/jobs/search/?f_LF=f_AL&geoId=102257491&keyw
 
 #Manages Login Credentials
 driver.find_element(By.XPATH,"/html/body/div[1]/header/nav/div/a[2]").click()# signIn button click
-driver.find_element(By.ID,"username").send_keys("misis55702@jzexport.com")
-driver.find_element(By.ID,"password").send_keys("998877@At")
+driver.find_element(By.ID,"username").send_keys("YOUR_EMAIL") #ENter your email
+driver.find_element(By.ID,"password").send_keys("PASSWORD")  # Enter your password
 driver.find_element(By.XPATH,"//*[@id='organic-div']/form/div[3]/button").click()# submit SignIn details
 
 #Replaces Search bar for desired job.
