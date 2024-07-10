@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
-# Keeep browser open after prograrm finishes
+# Keep browser open after prograrm finishes
 chrome_option=wd.ChromeOptions()
 chrome_option.add_experimental_option("detach",True)
 
@@ -48,5 +48,23 @@ password_detail.send_keys("998877@At")
 #this do the job of submitting detail and complete login process
 password_detail.send_keys(Keys.ENTER)
 
+sleep(2)
+original_window=driver.switch_to.window(windows_list[0])
+# give permission to pop-ups
+sleep(6)
+location_popup = driver.find_element(by=By.XPATH,value='//*[@id="u1146625330"]/div/div[1]/div/div/div[3]/button[1]/div[2]/div[2]')
+location_popup.click()
 
+sleep(2)
+notification_popup = driver.find_element(by=By.XPATH,value='//*[@id="u1146625330"]/div/div[1]/div/div/div[3]/button[2]/div[2]/div[2]/div')
+notification_popup.click()
 
+sleep(1)
+cookie_popup_accept = driver.find_element(by=By.XPATH,value='/html/body/div[1]/div/div[2]/div/div/div[1]/div[1]/button/div[2]/div[2]/div')
+cookie_popup_accept.click()
+
+sleep(5)
+for i in range(1,10):
+    driver.find_element(by=By.XPATH,value='//*[@id="u-1419960890"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[4]/div/div[4]/button').click()
+    i+=1
+    sleep(2)
