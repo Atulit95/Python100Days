@@ -40,7 +40,7 @@ second_window=driver.switch_to.window(windows_list[1])
 #delay and login detai submission
 sleep(2)
 email_detail = driver.find_element(by=By.XPATH,value='/html/body/div/div[2]/div[1]/form/div/div[1]/div/input')
-email_detail.send_keys("9555943149")
+email_detail.send_keys("")
 
 password_detail = driver.find_element(by=By.XPATH,value='/html/body/div/div[2]/div[1]/form/div/div[2]/div/input')
 password_detail.send_keys("998877@At")
