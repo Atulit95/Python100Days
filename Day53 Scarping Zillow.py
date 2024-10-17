@@ -35,15 +35,26 @@ chrome_option.add_experimental_option("detach", True)
 driver = wd.Chrome(chrome_option)
 driver.maximize_window()
 
-google_form_page = driver.get(url="https://forms.gle/m8sBcyzPYtpE2kVm8")
-# sleep(2)
-
-address_field = driver.find_element(
-    by=By.CLASS_NAME,
-    value='//*[@id="mG61Hd"]/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input',
-)
-# for i in range(0, len(address_list)):
-address_field.click()
-address_field.send_keys("vcfg")
+for i in range(0, len(address_list)):
+    google_form_page = driver.get(url="https://forms.gle/m8sBcyzPYtpE2kVm8")
+    address_field = driver.find_element(
+        by=By.XPATH,
+        value='/html/body/div/div[2]/form/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/div[1]/input',
+    )
+    sleep(2)
+    address_field.click()
+    address_field.send_keys(address_list[i])
+    
+    price_field = driver.find_element(by=By.XPATH,value='/html/body/div/div[2]/form/div[2]/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    sleep(2)
+    price_field.click()
+    price_field.send_keys(price_list[i])
+    
+    url_field = driver.find_element(by=By.XPATH,value='/html/body/div/div[2]/form/div[2]/div/div[2]/div[3]/div/div/div[2]/div/div[1]/div/div[1]/input')
+    sleep(2)
+    url_field.click()
+    url_field.send_keys(url_list[i])
+    
+    submit_button = driver.find_element(by=By.XPATH,value='/html/body/div/div[2]/form/div[2]/div/div[3]/div[1]/div[1]/div/span/span').click()
 
 driver.quit()

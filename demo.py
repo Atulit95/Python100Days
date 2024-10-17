@@ -1,19 +1,23 @@
-import requests
+from time import sleep
+from selenium import webdriver as wd
+from selenium.webdriver.common.by import By
 
-para = {
-    "fly_from": "LON",
-    "fly_to": "SYD",
-    "date_from": "02/05/2024",
-    "date_to": "04/05/2024",
-    "one_for_city": 1,
-}
+chrome_option = wd.ChromeOptions()
+chrome_option.add_experimental_option("detach", True)
 
-headers = {
-    "apikey": "n6ROzICxpBr1H0V3LxQ53u27d-7zyW7i",
-    "accept": "application/json"       
-        }
+driver = wd.Chrome(chrome_option)
+driver.maximize_window()
 
-response = requests.get(
-    url="https://api.tequila.kiwi.com/v2/search", params=para, headers=headers)
+google_form_page = driver.get(url="https://forms.gle/m8sBcyzPYtpE2kVm8")
+# sleep(2)
 
-print(response.json())
+address_field = driver.find_element(
+    by=By.CSS_SELECTOR,
+    value='#mG61Hd > div.RH5hzf.RLS9Fe > div > div.o3Dpx > div:nth-child(1) > div > div > div.AgroKb > div > div.aCsJod.oJeWuf > div > div.Xb9hP > input',
+)
+sleep(2)
+# for i in range(0, len(address_list)):
+address_field.click()
+address_field.send_keys("vcfg")
+
+driver.quit()
