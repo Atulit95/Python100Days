@@ -3,8 +3,8 @@ import pandas
 import random
 import smtplib
 
-my_email = "atulitgupta57@gmail.com"
-password = "miuvmsytawmhlman"
+my_email = "your_email"
+password = "your_password"
 ##################### Extra Hard Starting Project ######################
 
 # 1. Update the birthdays.csv

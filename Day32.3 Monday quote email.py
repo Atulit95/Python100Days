@@ -2,8 +2,8 @@ import datetime as dt
 import smtplib
 import random
 
-my_email = "atulitgupta57@gmail.com"
-password = "miuvmsytawmhlman"
+my_email = "your_email"
+password = "your_password"
 
 # ----------------------------- Quote Selection ---------------------#
 
